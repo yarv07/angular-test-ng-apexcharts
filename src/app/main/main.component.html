@@ -1,0 +1,45 @@
+<div class="container">
+  <div>
+    <mat-form-field>
+      <mat-label>Search filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Example: 'Book 77'" #input>
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>
+          Title
+        </th>
+        <td class="title-list" mat-cell *matCellDef="let element"> {{element.title}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th class="description-title" mat-header-cell *matHeaderCellDef>
+          Description
+        </th>
+        <td class="description-list" mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="pageCount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
+          Page count
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.pageCount}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="publishDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by publishDate">
+          Publish date
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.publishDate | date}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 20, 50]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
+
+    <button class="btn-excel" mat-stroked-button color="primary" (click)="exportExcel()">Export to MS Excel (books.xlsx)</button>
+  </div>
+</div>

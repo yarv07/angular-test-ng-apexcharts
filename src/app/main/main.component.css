@@ -1,0 +1,31 @@
+table {
+  width: 100%;
+}
+
+.container {
+  padding-top: 20px;
+}
+
+.mat-form-field {
+  font-size: 18px;
+  width: 100%;
+}
+
+.title-list {
+  width: 7%;
+}
+
+.description-title {
+  padding-left: 60px;
+}
+
+.description-list {
+  padding: 15px 60px;
+  width: 90%;
+}
+
+.btn-excel {
+  width: 250px;
+  padding: 5px;
+  text-align: center;
+}
